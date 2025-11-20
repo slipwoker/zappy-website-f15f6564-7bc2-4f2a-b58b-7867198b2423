@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://family-budget-planner-f15f6564.zappy5.app/sitemap.xml

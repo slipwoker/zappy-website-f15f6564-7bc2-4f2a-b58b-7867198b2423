@@ -1,0 +1,511 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about our mission to help families achieve financial freedom through sustainable budget planning and family life today principles.">
+  <meta name="keywords" content="family life today, Family Budget Planner, families, about us, financial mission">
+  <title>Our Mission for Families — Family Budget Planner</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+/* Zappy Attribution Header Styles */
+.zappy-header {
+  position: static;
+  width: 100%;
+  background: white;
+  box-shadow: 0px 4px 19px 0px rgba(0,0,0,0.04);
+  padding: 16px 10px;
+  text-align: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 21px;
+}
+
+    .zappy-header p {
+      margin: 0;
+      padding: 0;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      white-space: nowrap;
+      display: inline-block;
+      vertical-align: baseline;
+      margin-bottom: 0 !important;
+    }
+
+.zappy-header .zappy-link {
+  font-weight: 700;
+  color: #4a4a4a;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.zappy-header .zappy-link:hover {
+  opacity: 0.7;
+}</style>
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+<!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: 'f15f6564-7bc2-4f2a-b58b-7867198b2423',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Zappy Attribution Header -->
+<div id="zappy-attribution-header" class="zappy-header" style="display: none;">
+  <p>Happily created by&nbsp;<a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" class="zappy-link">Zappy</a></p>
+</div>
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="nav-brand">
+        <a href="/" class="logo-link">
+          <img src="assets/family-budget-planner-financial-technology-logo.webp" alt="Family Budget Planner" class="logo" />
+        </a>
+      </div>
+      
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+        <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+        <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+        </svg>
+      </button>
+      
+      <button class="phone-header-btn" aria-label="Call us">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+      </button>
+      
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="/services">Services</a></li>
+        <li><a href="/about">About</a></li>
+      </ul>
+      
+      <div class="nav-cta-container">
+        <li class="nav-cta-item">
+          <a href="/contact" class="nav-cta-btn">Contact</a>
+        </li>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Empowering Families Through Smart Financial Planning</h1>
+      <h3>Our story, mission, and commitment to helping families achieve lasting financial wellness</h3>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <div class="container">
+      <div class="story-content">
+        <h2>Our Story: Born from Family Experience</h2>
+        <p>The Family Budget Planner was born from a simple truth: managing family finances shouldn't be complicated, stressful, or time-consuming. Our founders, themselves parents struggling to balance household budgets while teaching their children about money, recognized a gap in the market. Existing financial tools were either too complex for everyday use or too simplistic to provide real value. Families needed something different—a solution that understood their unique challenges and supported their values.</p>
+        <p>What started as a personal project to help one family manage their finances has grown into a comprehensive platform serving thousands of families worldwide. We've maintained our core mission throughout this growth: to make budget planning accessible, effective, and aligned with the principles of sustainable living. Every feature we develop is tested with real families, ensuring it solves genuine problems and fits seamlessly into family life today.</p>
+        <p>Our approach combines cutting-edge financial technology with timeless principles of responsible money management. We believe that when families have clarity about their finances, they make better decisions—not just for their own future, but for the planet and community as well. This philosophy of sustainable financial planning sets us apart in an industry often focused solely on maximizing returns without considering broader impact.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="mission-vision">
+    <div class="container">
+      <div class="mission-grid">
+        <div class="mission-card">
+          <i class="fas fa-bullseye"></i>
+          <h2>Our Mission</h2>
+          <p>To empower families with intuitive, sustainable financial planning tools that reduce stress, increase savings, and promote long-term financial wellness. We're committed to making professional-grade budget planning accessible to every family, regardless of their current financial situation or technical expertise.</p>
+        </div>
+        <div class="mission-card">
+          <i class="fas fa-eye"></i>
+          <h2>Our Vision</h2>
+          <p>A world where every family has the knowledge, tools, and confidence to achieve financial freedom. We envision communities where financial literacy is the norm, where families plan together, and where sustainable financial practices contribute to both personal prosperity and environmental responsibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="container">
+      <h2>Our Core Values</h2>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Family First</h3>
+          <p>Every decision we make considers the impact on families. We design features that bring families together, promote open communication about money, and support collaborative financial planning. Our platform is built for families, by people who understand family dynamics.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Sustainability</h3>
+          <p>Financial planning and environmental responsibility go hand in hand. We help families make choices that are good for their wallets and the planet, promoting sustainable consumption, conscious spending, and long-term thinking over short-term gains.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Education</h3>
+          <p>Financial literacy is a gift that lasts a lifetime. We're committed to educating families about money management, helping parents teach their children valuable financial skills, and providing resources that demystify personal finance for everyone.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Trust &amp; Security</h3>
+          <p>Families trust us with their most sensitive financial information. We take this responsibility seriously, implementing bank-level security, transparent privacy policies, and ethical data practices that prioritize user protection above all else.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Innovation</h3>
+          <p>The financial landscape is constantly evolving, and so are we. We continuously improve our platform based on user feedback, emerging technologies, and changing family needs, ensuring our Family Budget Planner remains the most effective tool available.</p>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Accessibility</h3>
+          <p>Quality financial planning shouldn't be a luxury. We're committed to making our services accessible to families at all income levels, with pricing models that scale to need and free resources that provide value regardless of subscription status.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="approach-section">
+    <div class="container">
+      <h2>Our Approach to family life today Financial Planning</h2>
+      <div class="approach-content">
+        <p>What makes our Family Budget Planner different is our holistic approach to family finances. We don't just track expenses—we help families understand the why behind their spending, align their budget with their values, and create sustainable financial habits that last a lifetime. Our methodology is based on three core principles: awareness, intention, and action.</p>
+        <p>First, we help families gain complete awareness of their financial situation through comprehensive tracking and clear visualization. Many families are shocked to discover where their money actually goes each month. This awareness is the foundation for meaningful change. Second, we guide families to set intentional goals that reflect their true priorities—not what society tells them they should want, but what genuinely matters to them and their loved ones.</p>
+        <p>Finally, we provide the tools and support needed to take consistent action toward those goals. Small, regular actions compound over time into significant financial transformation. Our platform makes these actions easy, automatic where possible, and always aligned with the family's broader financial strategy. This approach has helped thousands of families reduce debt, increase savings, and achieve financial peace of mind.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact-section">
+    <div class="container">
+      <h2>Our Impact on Families Worldwide</h2>
+      <div class="impact-stats">
+        <div class="stat-item">
+          <div class="stat-number">25,000+</div>
+          <div class="stat-label">Families Served</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">$180M+</div>
+          <div class="stat-label">Total Savings Tracked</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">92%</div>
+          <div class="stat-label">User Satisfaction Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.8/5</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+      </div>
+      <div class="impact-text">
+        <p>These numbers represent real families who have transformed their financial lives using our platform. Behind each statistic is a story of reduced stress, achieved goals, and improved quality of life. We're proud of the impact we've made, but we're even more excited about the families we'll help in the future. Whether you're just starting your financial journey or looking to optimize an already solid foundation, we're here to support you every step of the way.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Join Our Community of Financially Empowered Families</h2>
+        <p>Ready to experience the difference that thoughtful, sustainable budget planning can make in your family's life? Let's start this journey together.</p>
+        <a href="/contact" class="btn-primary">Connect With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://wa.me/[whatsapp_handle]" target="_blank" class="whatsapp-float" aria-label="WhatsApp" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  
+    <!-- Legal Footer -->
+    <footer class="legal-footer">
+      <div class="container">
+        <div class="footer-main">
+          <div class="all-rights-reserved">
+            <p>© 2025 Family Budget Planner. All rights reserved.</p>
+          </div>
+          <div class="footer-social"><a href="https://facebook.com/[facebook_handle]" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+<a href="https://instagram.com/[instagram_handle]" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/[whatsapp_handle]" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a></div>
+          <div class="footer-legal">
+            <a href="privacy.html" aria-label="Privacy Policy">
+              Privacy Policy
+            </a>
+            <span class="separator">|</span>
+            <a href="accessibility.html" aria-label="Accessibility">
+              Accessibility
+            </a>
+            <span class="separator">|</span>
+            <a href="terms.html" aria-label="Terms & Conditions">
+              Terms & Conditions
+            </a>
+          </div>
+        </div>
+        <div class="zappy-attribution">
+          <p>Generated by <a href="https://zappy5.com" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">Zappy</a></p>
+        </div>
+      </div>
+    </footer>
+
+
+<!-- Zappy Attribution Header Script -->
+<script>
+(function() {
+  var websiteId = 'f15f6564-7bc2-4f2a-b58b-7867198b2423';
+  
+  // Don't show header in preview mode
+  var currentUrl = window.location.href;
+  var isPreview = currentUrl.includes('/preview/') || 
+                  currentUrl.includes('/preview-fullscreen/') || 
+                  currentUrl.includes('localhost:5001') ||
+                  currentUrl.includes('localhost:3000');
+  
+  if (isPreview) {
+    return; // Exit early in preview mode
+  }
+  
+  fetch('https://api.zappy5.com/api/website/' + websiteId + '/tier')
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+      if (data.showAttribution) {
+        var header = document.getElementById('zappy-attribution-header');
+        if (header) {
+          header.style.display = 'block';
+        }
+      }
+    })
+    .catch(function(error) {
+      console.error('Failed to check tier:', error);
+    });
+})();
+</script>
+    <div data-integration="accessibility:toolbar"></div>
+    <script src="script.js"></script>
+</body></html>
